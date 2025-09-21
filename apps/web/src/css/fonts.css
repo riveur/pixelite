@@ -7,3 +7,10 @@
 @import '@fontsource/geist-sans/700.css';
 @import '@fontsource/geist-sans/800.css';
 @import '@fontsource/geist-sans/900.css';
+
+@font-face {
+  font-family: Minecraft-Regular;
+  src: url(@/assets/fonts/Minecraft-Regular.otf) format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
