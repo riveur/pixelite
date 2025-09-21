@@ -1,4 +1,4 @@
-import { Spinner } from '@/components/ui/spinner'
+import { Spinner } from '@/features/core/components/ui/spinner'
 import { cn } from '@/lib/utils'
 
 export function Loading({

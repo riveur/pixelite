@@ -1,4 +1,4 @@
-import { Button } from '../ui/button'
+import { Button } from '@/features/core/components/ui/button'
 import { useTheme } from './theme_provider'
 import { ThemeIcon } from './theme_icon'
 
