@@ -12,14 +12,14 @@ interface ServerBannerProps {
 
 export function ServerBanner({ info }: ServerBannerProps) {
   return (
-    <Card className="relative overflow-hidden">
+    <Card className="group relative overflow-hidden" data-background={Boolean(info.backgroundUrl)}>
       {info.backgroundUrl && (
         <>
           <div
-            className="absolute inset-0 bg-center opacity-30"
+            className="absolute inset-0 bg-center opacity-80 dark:opacity-30"
             style={{ backgroundImage: `url(${info.backgroundUrl})` }}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background to-60%" />
+          <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background to-50% dark:to-60%" />
         </>
       )}
       {info.type === 'modded' && (
@@ -37,10 +37,12 @@ export function ServerBanner({ info }: ServerBannerProps) {
         <div className="flex-1 flex flex-col gap-2">
           <div className="space-y-1.5">
             <h1 className="text-3xl font-bold">{info.name}</h1>
-            <p className="text-muted-foreground">{info.description}</p>
+            <p className="dark:text-muted-foreground group-data-[backgroud=false]:text-muted-foreground">
+              {info.description}
+            </p>
           </div>
           <div className="flex flex-row items-center justify-between gap-4 w-full">
-            <div className="flex flex-row gap-4 text-muted-foreground font-minecraft">
+            <div className="flex flex-row gap-4 dark:text-muted-foreground group-data-[backgroud=false]:text-muted-foreground font-minecraft">
               <div>
                 <span className="font-medium">Version:</span> {info.primaryMinecraftVersion}
               </div>
