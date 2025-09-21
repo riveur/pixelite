@@ -2,7 +2,7 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 import { createRootRouteWithContext, Outlet, useRouter } from '@tanstack/react-router'
 import { TanStackRouterDevtools } from '@tanstack/react-router-devtools'
 
-import { Button } from '@/components/ui/button'
+import { Button } from '@/features/core/components/ui/button'
 import type { RouterContext } from '@/lib/router'
 
 export const Route = createRootRouteWithContext<RouterContext>()({

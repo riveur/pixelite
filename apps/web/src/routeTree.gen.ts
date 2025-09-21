@@ -9,38 +9,72 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as HypixelRouteRouteImport } from './routes/hypixel/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as HypixelIndexRouteImport } from './routes/hypixel/index'
+import { Route as HypixelPlayersRouteImport } from './routes/hypixel/players'
 
+const HypixelRouteRoute = HypixelRouteRouteImport.update({
+  id: '/hypixel',
+  path: '/hypixel',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const HypixelIndexRoute = HypixelIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => HypixelRouteRoute,
+} as any)
+const HypixelPlayersRoute = HypixelPlayersRouteImport.update({
+  id: '/players',
+  path: '/players',
+  getParentRoute: () => HypixelRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/hypixel': typeof HypixelRouteRouteWithChildren
+  '/hypixel/players': typeof HypixelPlayersRoute
+  '/hypixel/': typeof HypixelIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/hypixel/players': typeof HypixelPlayersRoute
+  '/hypixel': typeof HypixelIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/hypixel': typeof HypixelRouteRouteWithChildren
+  '/hypixel/players': typeof HypixelPlayersRoute
+  '/hypixel/': typeof HypixelIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/hypixel' | '/hypixel/players' | '/hypixel/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/hypixel/players' | '/hypixel'
+  id: '__root__' | '/' | '/hypixel' | '/hypixel/players' | '/hypixel/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  HypixelRouteRoute: typeof HypixelRouteRouteWithChildren
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/hypixel': {
+      id: '/hypixel'
+      path: '/hypixel'
+      fullPath: '/hypixel'
+      preLoaderRoute: typeof HypixelRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +82,40 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/hypixel/': {
+      id: '/hypixel/'
+      path: '/'
+      fullPath: '/hypixel/'
+      preLoaderRoute: typeof HypixelIndexRouteImport
+      parentRoute: typeof HypixelRouteRoute
+    }
+    '/hypixel/players': {
+      id: '/hypixel/players'
+      path: '/players'
+      fullPath: '/hypixel/players'
+      preLoaderRoute: typeof HypixelPlayersRouteImport
+      parentRoute: typeof HypixelRouteRoute
+    }
   }
 }
 
+interface HypixelRouteRouteChildren {
+  HypixelPlayersRoute: typeof HypixelPlayersRoute
+  HypixelIndexRoute: typeof HypixelIndexRoute
+}
+
+const HypixelRouteRouteChildren: HypixelRouteRouteChildren = {
+  HypixelPlayersRoute: HypixelPlayersRoute,
+  HypixelIndexRoute: HypixelIndexRoute,
+}
+
+const HypixelRouteRouteWithChildren = HypixelRouteRoute._addFileChildren(
+  HypixelRouteRouteChildren,
+)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  HypixelRouteRoute: HypixelRouteRouteWithChildren,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
