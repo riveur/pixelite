@@ -1,5 +1,6 @@
 import { CopyIcon } from 'lucide-react'
 
+import { useTranslation } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 import { useCopyToClipboard } from '../hooks/use_copy_clipboard'
 import type { ServerInfo } from '../types'
@@ -14,6 +15,7 @@ interface ServerOverviewProps extends React.ComponentProps<'div'> {
 }
 
 export function ServerOverview({ info, className, ...props }: ServerOverviewProps) {
+  const { t, i18n } = useTranslation()
   const [, copy] = useCopyToClipboard()
 
   return (
@@ -27,11 +29,11 @@ export function ServerOverview({ info, className, ...props }: ServerOverviewProp
         </Avatar>
         <div className="space-y-1.5">
           <Details>
-            <DetailsTitle data-mc>Name</DetailsTitle>
+            <DetailsTitle data-mc>{t('server.labels.name')}</DetailsTitle>
             <DetailsContent className="text-foreground">{info.name}</DetailsContent>
           </Details>
           <Details>
-            <DetailsTitle data-mc>Description</DetailsTitle>
+            <DetailsTitle data-mc>{t('server.labels.description')}</DetailsTitle>
             <DetailsContent className="text-foreground">{info.description}</DetailsContent>
           </Details>
         </div>
@@ -39,7 +41,7 @@ export function ServerOverview({ info, className, ...props }: ServerOverviewProp
       <Separator />
       {info.address && (
         <Details>
-          <DetailsTitle data-mc>Address</DetailsTitle>
+          <DetailsTitle data-mc>{t('server.labels.address')}</DetailsTitle>
           <DetailsContent className="text-foreground flex items-center gap-1">
             <span>{info.address}</span>
             <Button
@@ -54,7 +56,7 @@ export function ServerOverview({ info, className, ...props }: ServerOverviewProp
         </Details>
       )}
       <Details>
-        <DetailsTitle data-mc>Version</DetailsTitle>
+        <DetailsTitle data-mc>{t('server.labels.version')}</DetailsTitle>
         <DetailsContent className="text-foreground flex flex-row flex-wrap items-center gap-1">
           <Badge>{info.primaryMinecraftVersion}</Badge>
           {info.minecraftVersions.map((version) => (
@@ -63,21 +65,23 @@ export function ServerOverview({ info, className, ...props }: ServerOverviewProp
         </DetailsContent>
       </Details>
       <Details>
-        <DetailsTitle data-mc>Game Type</DetailsTitle>
+        <DetailsTitle data-mc>{t('server.labels.gameType')}</DetailsTitle>
         <DetailsContent className="text-foreground">
-          {new Intl.ListFormat().format(info.gameTypes)}
+          {new Intl.ListFormat(i18n.resolvedLanguage).format(info.gameTypes)}
         </DetailsContent>
       </Details>
       <Details>
-        <DetailsTitle data-mc>Server Type</DetailsTitle>
-        <DetailsContent className="text-foreground">{info.type}</DetailsContent>
+        <DetailsTitle data-mc>{t('server.labels.type')}</DetailsTitle>
+        <DetailsContent className="text-foreground">
+          {t(`server.type.${info.type}`, { defaultValue: info.type })}
+        </DetailsContent>
       </Details>
       <Details>
-        <DetailsTitle data-mc>Language</DetailsTitle>
+        <DetailsTitle data-mc>{t('server.labels.language')}</DetailsTitle>
         <DetailsContent className="text-foreground">{info.language}</DetailsContent>
       </Details>
       <Details>
-        <DetailsTitle data-mc>Website</DetailsTitle>
+        <DetailsTitle data-mc>{t('server.labels.website')}</DetailsTitle>
         <DetailsContent className="text-foreground">
           <a href={info.website} target="_blank" className="underline">
             {info.website}
@@ -86,7 +90,7 @@ export function ServerOverview({ info, className, ...props }: ServerOverviewProp
       </Details>
       {info.wiki && (
         <Details>
-          <DetailsTitle data-mc>Wiki</DetailsTitle>
+          <DetailsTitle data-mc>{t('server.labels.wiki')}</DetailsTitle>
           <DetailsContent className="text-foreground">
             <a href={info.wiki} target="_blank" className="underline">
               {info.wiki}

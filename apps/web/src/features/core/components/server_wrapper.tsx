@@ -5,7 +5,7 @@ import { cn } from '@/lib/utils'
 import { Button } from './ui/button'
 
 function ServerWrapper({ className, ...props }: React.ComponentProps<'div'>) {
-  return <div className={cn('flex flex-row gap-4', className)} {...props} />
+  return <div className={cn('flex flex-row gap-6', className)} {...props} />
 }
 
 function ServerWrapperInset({ className, ...props }: React.ComponentProps<'div'>) {

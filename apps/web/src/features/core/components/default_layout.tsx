@@ -1,6 +1,7 @@
 import { Link } from '@tanstack/react-router'
 
 import { cn } from '@/lib/utils'
+import { LangSwitcher } from './lang_switcher'
 import { Logo } from './logo'
 import { ThemeToggler } from './theme_toggler'
 
@@ -25,7 +26,10 @@ function Header() {
         <Link to="/" className="hover:underline">
           <Logo />
         </Link>
-        <ThemeToggler size="icon" variant="outline" className="size-7" />
+        <div className="flex flex-row gap-1 items-center">
+          <LangSwitcher className="h-7" />
+          <ThemeToggler size="icon" variant="outline" className="size-7" />
+        </div>
       </div>
     </header>
   )

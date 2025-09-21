@@ -1,0 +1,30 @@
+{
+  "home": {
+    "title": "Welcome to Pixelite",
+    "description": "Hub for your favourite Minecraft servers."
+  },
+  "selectLanguage": "Select Language",
+  "server": {
+    "labels": {
+      "player": "Player",
+      "players": "Players",
+      "version": "Version",
+      "address": "Address",
+      "name": "Name",
+      "description": "Description",
+      "gameType": "Game Type",
+      "type": "Server Type",
+      "language": "Language",
+      "website": "Website",
+      "wiki": "Wiki",
+      "overview": "Overview"
+    },
+    "type": {
+      "vanilla": "Vanilla",
+      "modded": "Modded"
+    },
+    "hypixel": {
+      "guildLabel": "Guild"
+    }
+  }
+}

@@ -9,6 +9,7 @@ import {
   type ServerWrapperNavigationLink,
 } from '@/features/core/components/server_wrapper'
 import { info } from '@/features/hypixel/contents/info'
+import { useTranslation } from '@/lib/i18n'
 
 export const Route = createFileRoute('/hypixel')({
   beforeLoad: async () => {
@@ -19,15 +20,17 @@ export const Route = createFileRoute('/hypixel')({
   component: RouteComponent,
 })
 
-const links: Array<ServerWrapperNavigationLink> = [
-  { label: 'Overview', url: '/hypixel' },
-  { label: 'Player', url: '/hypixel/players' },
-  { label: 'Guild', url: '/hypixel/guilds' },
-  { label: 'Website', url: info.website, external: true },
-  { label: 'Wiki', url: info.wiki!, external: true },
-]
-
 function RouteComponent() {
+  const { t } = useTranslation()
+
+  const links: Array<ServerWrapperNavigationLink> = [
+    { label: t('server.labels.overview'), url: '/hypixel' },
+    { label: t('server.labels.player'), url: '/hypixel/players' },
+    { label: t('server.hypixel.guildLabel'), url: '/hypixel/guilds' },
+    { label: t('server.labels.website'), url: info.website, external: true },
+    { label: t('server.labels.wiki'), url: info.wiki!, external: true },
+  ]
+
   return (
     <DefaultLayout>
       <ServerBanner info={info} />

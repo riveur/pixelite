@@ -1,5 +1,6 @@
 import { BookOpenTextIcon, Globe2Icon } from 'lucide-react'
 
+import { useTranslation } from '@/lib/i18n'
 import type { ServerInfo } from '../types'
 import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar'
 import { Badge } from './ui/badge'
@@ -11,6 +12,8 @@ interface ServerBannerProps {
 }
 
 export function ServerBanner({ info }: ServerBannerProps) {
+  const { t } = useTranslation()
+
   return (
     <Card className="group relative overflow-hidden" data-background={Boolean(info.backgroundUrl)}>
       {info.backgroundUrl && (
@@ -44,23 +47,36 @@ export function ServerBanner({ info }: ServerBannerProps) {
           <div className="flex flex-row items-center justify-between gap-4 w-full">
             <div className="flex flex-row gap-4 dark:text-muted-foreground group-data-[backgroud=false]:text-muted-foreground font-minecraft">
               <div>
-                <span className="font-medium">Version:</span> {info.primaryMinecraftVersion}
+                <span className="font-medium">{t('server.labels.version')} :</span>{' '}
+                {info.primaryMinecraftVersion}
               </div>
               {info.address && (
                 <div>
-                  <span className="font-medium">Address:</span> {info.address}
+                  <span className="font-medium">{t('server.labels.address')} :</span> {info.address}
                 </div>
               )}
             </div>
             <div className="flex flex-row items-center gap-2">
               {info.wiki && (
-                <Button title="Wiki" size="icon" className="size-7" variant="secondary" asChild>
+                <Button
+                  title={t('server.labels.wiki')}
+                  size="icon"
+                  className="size-7"
+                  variant="secondary"
+                  asChild
+                >
                   <a href={info.wiki} target="_blank">
                     <BookOpenTextIcon />
                   </a>
                 </Button>
               )}
-              <Button title="Website" size="icon" className="size-7" variant="secondary" asChild>
+              <Button
+                title={t('server.labels.website')}
+                size="icon"
+                className="size-7"
+                variant="secondary"
+                asChild
+              >
                 <a href={info.website} target="_blank">
                   <Globe2Icon />
                 </a>
