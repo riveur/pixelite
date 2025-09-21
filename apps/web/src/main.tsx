@@ -2,7 +2,7 @@ import { RouterProvider } from '@tanstack/react-router'
 import { StrictMode } from 'react'
 import ReactDOM from 'react-dom/client'
 
-import { Providers } from './components/shared/providers'
+import { Providers } from './features/core/components/providers'
 import { router } from './lib/router'
 import './css/styles.css'
 

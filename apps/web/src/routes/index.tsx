@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 
-import { ThemeToggler } from '@/components/shared/theme_toggler'
+import { DefaultLayout } from '@/features/core/components/default_layout'
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -8,18 +8,11 @@ export const Route = createFileRoute('/')({
 
 function RouteComponent() {
   return (
-    <>
-      <div className="min-h-screen bg-gradient-to-b from-background to-secondary">
-        <div className="container mx-auto px-4 py-16 flex flex-col items-center justify-center min-h-screen text-center">
-          <div className="space-y-6 max-w-3xl">
-            <h1 className="text-6xl font-bold">TRA Stack</h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Let's build something great together.
-            </p>
-          </div>
-        </div>
+    <DefaultLayout className="bg-gradient-to-b from-background to-secondary flex">
+      <div className="flex-1 flex flex-col items-center justify-center gap-6">
+        <h1 className="text-6xl font-bold font-minecraft">pixelite brr brr !!!</h1>
+        <p className="text-xl text-muted-foreground mb-8">Let's build something great together.</p>
       </div>
-      <ThemeToggler className="fixed top-4 right-4 size-8" />
-    </>
+    </DefaultLayout>
   )
 }
