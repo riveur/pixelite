@@ -1,8 +1,10 @@
 import { Link, useMatches } from '@tanstack/react-router'
 import { ExternalLinkIcon } from 'lucide-react'
 
+import { useTranslation } from '@/lib/i18n'
 import { cn } from '@/lib/utils'
 import { Button } from './ui/button'
+import { Drawer, DrawerContent, DrawerHeader, DrawerTitle, DrawerTrigger } from './ui/drawer'
 
 function ServerWrapper({ className, ...props }: React.ComponentProps<'div'>) {
   return <div className={cn('flex flex-row gap-6', className)} {...props} />
@@ -28,7 +30,7 @@ function ServerWrapperNavigation({ links, className, ...props }: ServerWrapperNa
   const matches = useMatches()
 
   return (
-    <nav className={cn('grow flex w-full max-w-64', className)} {...props}>
+    <nav className={cn('grow hidden lg:flex w-full max-w-64', className)} {...props}>
       <ul className="flex flex-col gap-1 flex-1">
         {links.map((link) => (
           <li key={link.url}>
@@ -61,5 +63,55 @@ function ServerWrapperNavigation({ links, className, ...props }: ServerWrapperNa
   )
 }
 
-export { ServerWrapper, ServerWrapperInset, ServerWrapperNavigation }
+interface ServerWrapperNavigationMobileProps {
+  links: ServerWrapperNavigationLink[]
+  children: React.ReactNode
+}
+
+function ServerWrapperNavigationMobile({ links, children }: ServerWrapperNavigationMobileProps) {
+  const matches = useMatches()
+  const { t } = useTranslation()
+  return (
+    <Drawer>
+      <DrawerTrigger asChild>{children}</DrawerTrigger>
+      <DrawerContent>
+        <DrawerHeader>
+          <DrawerTitle>{t('server.labels.menu')}</DrawerTitle>
+        </DrawerHeader>
+        <nav className="w-full p-4 pt-0">
+          <ul className="flex flex-col gap-1 flex-1">
+            {links.map((link) => (
+              <li key={link.url}>
+                <Button
+                  className="font-minecraft text-base justify-baseline w-full data-[active=true]:bg-accent"
+                  variant="outline"
+                  data-active={
+                    matches.at(-1)!.fullPath.startsWith(link.url) &&
+                    (link.children || []).includes(matches.at(-1)!.routeId)
+                  }
+                  asChild
+                >
+                  {link.external ? (
+                    <a href={link.url} target="_blank">
+                      {link.icon}
+                      {link.label}
+                      <ExternalLinkIcon className="ml-auto" />
+                    </a>
+                  ) : (
+                    <Link to={link.url}>
+                      {link.icon}
+                      {link.label}
+                    </Link>
+                  )}
+                </Button>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </DrawerContent>
+    </Drawer>
+  )
+}
+
+export { ServerWrapper, ServerWrapperInset, ServerWrapperNavigation, ServerWrapperNavigationMobile }
 export type { ServerWrapperNavigationLink }

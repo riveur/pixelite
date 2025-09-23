@@ -44,8 +44,8 @@ export function ServerBanner({ info }: ServerBannerProps) {
               {info.description}
             </p>
           </div>
-          <div className="flex flex-row items-center justify-between gap-4 w-full">
-            <div className="flex flex-row gap-4 dark:text-muted-foreground group-data-[backgroud=false]:text-muted-foreground font-minecraft">
+          <div className="flex flex-row items-center justify-between gap-4 w-full flex-wrap">
+            <div className="flex flex-row flex-wrap gap-4 dark:text-muted-foreground group-data-[backgroud=false]:text-muted-foreground font-minecraft">
               <div>
                 <span className="font-medium">{t('server.labels.version')} :</span>{' '}
                 {info.primaryMinecraftVersion}

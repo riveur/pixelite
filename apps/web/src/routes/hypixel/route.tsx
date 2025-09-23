@@ -36,7 +36,7 @@ function RouteComponent() {
   ]
 
   return (
-    <DefaultLayout>
+    <DefaultLayout serverLinks={links}>
       <ServerBanner info={info} />
       <ServerWrapper>
         <ServerWrapperNavigation links={links} />

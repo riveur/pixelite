@@ -17,7 +17,8 @@
       "language": "Langue",
       "website": "Site web",
       "wiki": "Wiki",
-      "overview": "Aperçu"
+      "overview": "Aperçu",
+      "menu": "Menu du serveur"
     },
     "type": {
       "vanilla": "Vanilla",
