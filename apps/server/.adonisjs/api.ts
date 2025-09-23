@@ -7,7 +7,23 @@
 import type { MakeTuyauRequest, MakeTuyauResponse } from '@tuyau/utils/types'
 import type { InferInput } from '@vinejs/vine/types'
 
+type ApiHypixelPlayersIdGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/hypixel/controllers/show_player_controller.ts').default['handle'], false>
+}
 export interface ApiDefinition {
+  'api': {
+    'hypixel': {
+      'players': {
+        ':username': {
+          '$url': {
+          };
+          '$get': ApiHypixelPlayersIdGetHead;
+          '$head': ApiHypixelPlayersIdGetHead;
+        };
+      };
+    };
+  };
 }
 const routes = [
 ] as const;

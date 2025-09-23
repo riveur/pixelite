@@ -1,4 +1,4 @@
-import { Link } from '@tanstack/react-router'
+import { Link, useMatches } from '@tanstack/react-router'
 import { ExternalLinkIcon } from 'lucide-react'
 
 import { cn } from '@/lib/utils'
@@ -17,6 +17,7 @@ type ServerWrapperNavigationLink = {
   url: string
   icon?: React.ReactNode
   external?: boolean
+  children?: string[]
 }
 
 interface ServerWrapperNavigationProps extends React.ComponentProps<'nav'> {
@@ -24,14 +25,20 @@ interface ServerWrapperNavigationProps extends React.ComponentProps<'nav'> {
 }
 
 function ServerWrapperNavigation({ links, className, ...props }: ServerWrapperNavigationProps) {
+  const matches = useMatches()
+
   return (
     <nav className={cn('grow flex w-full max-w-64', className)} {...props}>
       <ul className="flex flex-col gap-1 flex-1">
         {links.map((link) => (
           <li key={link.url}>
             <Button
-              className="font-minecraft text-base justify-baseline w-full data-[status=active]:bg-accent"
+              className="font-minecraft text-base justify-baseline w-full data-[active=true]:bg-accent"
               variant="outline"
+              data-active={
+                matches.at(-1)!.fullPath.startsWith(link.url) &&
+                (link.children || []).includes(matches.at(-1)!.routeId)
+              }
               asChild
             >
               {link.external ? (
@@ -54,5 +61,5 @@ function ServerWrapperNavigation({ links, className, ...props }: ServerWrapperNa
   )
 }
 
-export type { ServerWrapperNavigationLink }
 export { ServerWrapper, ServerWrapperInset, ServerWrapperNavigation }
+export type { ServerWrapperNavigationLink }

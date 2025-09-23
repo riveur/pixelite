@@ -24,9 +24,13 @@ function RouteComponent() {
   const { t } = useTranslation()
 
   const links: Array<ServerWrapperNavigationLink> = [
-    { label: t('server.labels.overview'), url: '/hypixel' },
-    { label: t('server.labels.player'), url: '/hypixel/players' },
-    { label: t('server.hypixel.guildLabel'), url: '/hypixel/guilds' },
+    { label: t('server.labels.overview'), url: '/hypixel', children: ['/hypixel', '/hypixel/'] },
+    {
+      label: t('server.labels.player'),
+      url: '/hypixel/players',
+      children: ['/hypixel/players', '/hypixel/players/', '/hypixel/players/$username'],
+    },
+    { label: t('server.hypixel.labels.guild'), url: '/hypixel/guilds' },
     { label: t('server.labels.website'), url: info.website, external: true },
     { label: t('server.labels.wiki'), url: info.wiki!, external: true },
   ]

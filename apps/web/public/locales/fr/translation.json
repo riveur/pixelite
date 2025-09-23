@@ -24,7 +24,24 @@
       "modded": "Moddé"
     },
     "hypixel": {
-      "guildLabel": "Guilde"
+      "labels": {
+        "rank": "Grade",
+        "level": "Niveau",
+        "karma": "Karma",
+        "experience": "Expérience",
+        "remainingExperienceToLevelUp": "XP restante pour monter de niveau",
+        "achievementPoints": "Points d'achievement",
+        "questCompleted": "Quêtes terminées",
+        "firstLogin": "Première connexion",
+        "tag": "Tag",
+        "members": "Membres",
+        "joined": "Rejoint",
+        "guild": "Guilde",
+        "playerInfo": "Informations du joueur",
+        "guildInfo": "Informations de la guilde"
+      },
+      "playerSearchPlaceholder": "Rechercher un joueur...",
+      "playerSearchHelper": "Pour commencer à voir les statistiques d'un joueur, tapez son nom d'utilisateur dans la barre de recherche ci-dessus."
     }
   }
 }
