@@ -18,7 +18,8 @@
       "website": "Website",
       "wiki": "Wiki",
       "overview": "Overview",
-      "menu": "Server Menu"
+      "menu": "Server Menu",
+      "statistics": "Statistics"
     },
     "type": {
       "vanilla": "Vanilla",
@@ -39,7 +40,33 @@
         "joined": "Joined",
         "guild": "Guild",
         "playerInfo": "Player Informations",
-        "guildInfo": "Guild Informations"
+        "guildInfo": "Guild Informations",
+        "prestige": "Prestige"
+      },
+      "messages": {
+        "noStats": "No stats available for this player."
+      },
+      "games": {
+        "bedwars": {
+          "labels": {
+            "gamesPlayed":"Games Played",
+            "wins":"Wins",
+            "losses":"Losses",
+            "bedsBroken":"Beds Broken",
+            "bedsLost":"Beds Lost",
+            "kills":"Kills",
+            "deaths":"Deaths",
+            "finalKills":"Final Kills",
+            "finalDeaths":"Final Deaths",
+            "winstreak":"Winstreak",
+            "wlr":"W/L Ratio",
+            "kdr":"K/D Ratio",
+            "fkdr":"Final K/D Ratio"
+          },
+          "modes": {
+            "overall": "Overall"
+          }
+        }
       },
       "playerSearchPlaceholder": "Search a player...",
       "playerSearchHelper": "To start seeing a player's stats, type their username in the search bar above."

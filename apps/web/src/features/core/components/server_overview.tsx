@@ -78,7 +78,7 @@ export function ServerOverview({ info, className, ...props }: ServerOverviewProp
       </Details>
       <Details>
         <DetailsTitle data-mc>{t('server.labels.language')}</DetailsTitle>
-        <DetailsContent className="text-foreground">{info.language}</DetailsContent>
+        <DetailsContent className="text-foreground">{info.language.toUpperCase()}</DetailsContent>
       </Details>
       <Details>
         <DetailsTitle data-mc>{t('server.labels.website')}</DetailsTitle>

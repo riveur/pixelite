@@ -39,7 +39,33 @@
         "joined": "Rejoint",
         "guild": "Guilde",
         "playerInfo": "Informations du joueur",
-        "guildInfo": "Informations de la guilde"
+        "guildInfo": "Informations de la guilde",
+        "prestige": "Prestige"
+      },
+      "messages": {
+        "noStats": "Aucune statistique disponible pour ce joueur."
+      },
+      "games": {
+        "bedwars": {
+          "labels": {
+            "gamesPlayed":"Parties jouées",
+            "wins":"Parties gagnées",
+            "losses":"Parties perdues",
+            "bedsBroken":"Lits détruits",
+            "bedsLost":"Lits perdus",
+            "kills":"Tués",
+            "deaths":"Morts",
+            "finalKills":"Final Kills",
+            "finalDeaths":"Final Deaths",
+            "winstreak":"Série de victoires",
+            "wlr":"Ratio W/L",
+            "kdr":"Ratio K/D",
+            "fkdr":"Ratio Final K/D"
+          },
+          "modes": {
+            "overall": "Global"
+          }
+        }
       },
       "playerSearchPlaceholder": "Rechercher un joueur...",
       "playerSearchHelper": "Pour commencer à voir les statistiques d'un joueur, tapez son nom d'utilisateur dans la barre de recherche ci-dessus."

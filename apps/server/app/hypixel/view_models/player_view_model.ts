@@ -1,4 +1,9 @@
-import { getNetworkLevel, getPlayerRank, MinecraftFormatting } from '@zikeji/hypixel'
+import {
+  getBedwarsLevelInfo,
+  getNetworkLevel,
+  getPlayerRank,
+  MinecraftFormatting,
+} from '@zikeji/hypixel'
 
 import type { HypixelApiService } from '#hypixel/services/hypixel_api_service'
 
@@ -14,7 +19,6 @@ export class PlayerViewModel {
   serialize() {
     const networkLevel = getNetworkLevel(this.player)
     const rank = getPlayerRank(this.player)
-
     const guildMember = this.player.guild?.members.find((m) => m.uuid === this.player.uuid) || null
 
     return {
@@ -58,6 +62,62 @@ export class PlayerViewModel {
               : null,
           }
         : null,
+      stats: {
+        bedwars: this.getBedwarsStats(),
+      },
+    }
+  }
+
+  private getBedwarsStatsForMode(prefix: string) {
+    return {
+      gamesPlayed: Number(this.player.stats?.Bedwars?.[`${prefix}games_played_bedwars`] || 0),
+      wins: Number(this.player.stats?.Bedwars?.[`${prefix}wins_bedwars`] || 0),
+      losses: Number(this.player.stats?.Bedwars?.[`${prefix}losses_bedwars`] || 0),
+      bedsBroken: Number(this.player.stats?.Bedwars?.[`${prefix}beds_broken_bedwars`] || 0),
+      bedsLost: Number(this.player.stats?.Bedwars?.[`${prefix}beds_lost_bedwars`] || 0),
+      kills: Number(this.player.stats?.Bedwars?.[`${prefix}kills_bedwars`] || 0),
+      deaths: Number(this.player.stats?.Bedwars?.[`${prefix}deaths_bedwars`] || 0),
+      finalKills: Number(this.player.stats?.Bedwars?.[`${prefix}final_kills_bedwars`] || 0),
+      finalDeaths: Number(this.player.stats?.Bedwars?.[`${prefix}final_deaths_bedwars`] || 0),
+      winstreak: Number(this.player.stats?.Bedwars?.[`${prefix}winstreak`] || 0),
+    }
+  }
+
+  private getBedwarsStats() {
+    if (!this.player.stats?.Bedwars) {
+      return null
+    }
+
+    const levelInfo = getBedwarsLevelInfo(this.player)
+
+    return {
+      level: levelInfo.level,
+      prestigeName: levelInfo.prestigeName,
+      prestigeColor: levelInfo.prestigeColor,
+      normal: {
+        'overall': this.getBedwarsStatsForMode(''),
+        'solo': this.getBedwarsStatsForMode('eight_one_'),
+        'doubles': this.getBedwarsStatsForMode('eight_two_'),
+        '3v3v3v3': this.getBedwarsStatsForMode('four_three_'),
+        '4v4v4v4': this.getBedwarsStatsForMode('four_four_'),
+        '4v4': this.getBedwarsStatsForMode('two_four_'),
+      },
+      dreams: {
+        rush_doubles: this.getBedwarsStatsForMode('eight_two_rush_'),
+        rush_4v4v4v4: this.getBedwarsStatsForMode('four_four_rush_'),
+        ultimate_doubles: this.getBedwarsStatsForMode('eight_two_ultimate_'),
+        ultimate_4v4v4v4: this.getBedwarsStatsForMode('four_four_ultimate_'),
+        lucky_v2_doubles: this.getBedwarsStatsForMode('eight_two_lucky_'),
+        lucky_v2_4v4v4v4: this.getBedwarsStatsForMode('four_four_lucky_'),
+        voidless_doubles: this.getBedwarsStatsForMode('eight_two_voidless_'),
+        voidless_4v4v4v4: this.getBedwarsStatsForMode('four_four_voidless_'),
+        armed_doubles: this.getBedwarsStatsForMode('eight_two_armed_'),
+        armed_4v4v4v4: this.getBedwarsStatsForMode('four_four_armed_'),
+        swappage_doubles: this.getBedwarsStatsForMode('eight_two_swappage_'),
+        swappage_4v4v4v4: this.getBedwarsStatsForMode('four_four_swappage_'),
+        castle: this.getBedwarsStatsForMode('castle_'),
+        oneblock: this.getBedwarsStatsForMode('eight_one_oneblock_'),
+      },
     }
   }
 }
