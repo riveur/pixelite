@@ -126,5 +126,5 @@
 }
 
 @theme inline {
-  --font-minecraft: 'Minecraft-Regular';
+  --font-minecraft: 'Minecraft', serif;
 }

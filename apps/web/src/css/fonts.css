@@ -9,8 +9,8 @@
 @import '@fontsource/geist-sans/900.css';
 
 @font-face {
-  font-family: Minecraft-Regular;
-  src: url(@/assets/fonts/Minecraft-Regular.otf) format('truetype');
+  font-family: Minecraft;
+  src: url(@/assets/fonts/MinecraftSeven.woff) format('truetype');
   font-weight: 400;
   font-style: normal;
 }
