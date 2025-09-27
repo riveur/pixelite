@@ -71,5 +71,8 @@
       "playerSearchPlaceholder": "Search a player...",
       "playerSearchHelper": "To start seeing a player's stats, type their username in the search bar above."
     }
-  }
+  },
+  "terms": "Terms of Service",
+  "privacy": "Privacy Policy",
+  "copyright": "© {{year}} All rights reserved."
 }

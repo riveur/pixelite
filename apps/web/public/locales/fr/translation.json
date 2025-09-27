@@ -70,5 +70,8 @@
       "playerSearchPlaceholder": "Rechercher un joueur...",
       "playerSearchHelper": "Pour commencer à voir les statistiques d'un joueur, tapez son nom d'utilisateur dans la barre de recherche ci-dessus."
     }
-  }
+  },
+  "terms": "Conditions d'utilisation",
+  "privacy": "Politique de confidentialité",
+  "copyright": "© {{year}} Tous droits réservées."
 }

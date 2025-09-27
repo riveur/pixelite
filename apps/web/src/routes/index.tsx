@@ -11,7 +11,7 @@ function RouteComponent() {
   const { t } = useTranslation()
 
   return (
-    <DefaultLayout className="bg-gradient-to-b from-background to-secondary flex">
+    <DefaultLayout className="flex">
       <div className="flex-1 flex flex-col items-center justify-center gap-6">
         <h1 className="text-6xl font-bold font-minecraft">{t('home.title')}</h1>
         <p className="text-xl text-muted-foreground mb-8">{t('home.description')}</p>
