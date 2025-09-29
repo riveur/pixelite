@@ -113,6 +113,50 @@ export function PixelAlertIcon(props: React.ComponentProps<'svg'>) {
   )
 }
 
+export function PixelServerIcon(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        d="M3 3h18v18H3V3zm2 2v6h14V5H5zm14 8H5v6h14v-6zM7 7h2v2H7V7zm2 8H7v2h2v-2z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
+
+export function PixelUsersIcon(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        d="M11 0H5v2H3v6h2v2h6V8H5V2h6V0zm0 2h2v6h-2V2zM0 14h2v4h12v2H0v-6zm2 0h12v-2H2v2zm14 0h-2v6h2v-6zM15 0h4v2h-4V0zm4 8h-4v2h4V8zm0-6h2v6h-2V2zm5 12h-2v4h-4v2h6v-6zm-6-2h4v2h-4v-2z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
+
+export function PixelChartIcon(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        d="M5 3H3v18h18V3H5zm14 2v14H5V5h14zM9 11H7v6h2v-6zm2-4h2v10h-2V7zm6 6h-2v4h2v-4z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
+
+export function PixelImageIcon(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        d="M4 3H2v18h20V3H4zm16 2v14H4V5h16zm-6 4h-2v2h-2v2H8v2H6v2h2v-2h2v-2h2v-2h2v2h2v2h2v-2h-2v-2h-2V9zM8 7H6v2h2V7z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
+
 export function DiscordIcon(props: React.ComponentProps<'svg'>) {
   return (
     <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>

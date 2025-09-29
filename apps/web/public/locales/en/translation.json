@@ -1,7 +1,36 @@
 {
   "home": {
-    "title": "Welcome to Pixelite",
-    "description": "Hub for your favourite Minecraft servers."
+    "title": "Pixelite",
+    "description": "The utimate hub for your favourite Minecraft servers.",
+    "callToAction": "Explore",
+    "features": {
+      "section": {
+        "title": "Everything to showcase your community",
+        "description": "From small community servers to massive networks, display your player data beautifully with Pixelite."
+      },
+      "feature1": {
+        "title": "Server Integration",
+        "description": "Connect multiple Minecraft servers and aggregate their data into a unified, beautiful dashboard."
+      },
+      "feature2": {
+        "title": "Player Profiles",
+        "description": "Detailed player statistics, achievements, playtime tracking, and comprehensive gaming profiles."
+      },
+      "feature3": {
+        "title": "Leaderboards & Rankings",
+        "description": "Leaderboards for kills, deaths, playtime, achievements, and custom server metrics."
+      }
+    },
+    "servers": {
+      "section": {
+        "title": "Servers",
+        "description": "Discover and explore our featured Minecraft servers."
+      },
+      "submit": {
+        "title": "Your Server",
+        "description": "Get featured on Pixelite"
+      }
+    }
   },
   "selectLanguage": "Select Language",
   "server": {

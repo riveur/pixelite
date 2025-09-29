@@ -1,7 +1,36 @@
 {
   "home": {
-    "title": "Bienvenue sur Pixelite",
-    "description": "Hub pour vos serveurs Minecraft préférés."
+    "title": "Pixelite",
+    "description": "Hub ultime pour vos serveurs Minecraft préférés.",
+    "callToAction": "Explorer",
+    "features": {
+      "section": {
+        "title": "Tout pour mettre en valeur votre communauté",
+        "description": "Des petits serveurs, aux plus gros, affichez les données de vos joueurs magnifiquement avec Pixelite."
+      },
+      "feature1": {
+        "title": "Intégration de serveur",
+        "description": "Connectez plusieurs serveurs Minecraft et agrégez leurs données dans un tableau de bord unifié et magnifique."
+      },
+      "feature2": {
+        "title": "Profils de joueurs",
+        "description": "Statistiques détaillées des joueurs, réalisations, suivi du temps de jeu et profils de jeu complets."
+      },
+      "feature3": {
+        "title": "Classements",
+        "description": "Classements pour les kills, morts, temps de jeu, réalisations et métriques personnalisées du serveur."
+      }
+    },
+    "servers": {
+      "section": {
+        "title": "Serveurs",
+        "description": "Découvrez et explorez nos serveurs Minecraft en vedette."
+      },
+      "submit": {
+        "title": "Votre serveur",
+        "description": "Soyez mis en avant sur Pixelite"
+      }
+    }
   },
   "selectLanguage": "Sélectionner la langue",
   "server": {

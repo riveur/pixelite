@@ -88,7 +88,7 @@ function Footer({ className, ...props }: React.ComponentProps<'footer'>) {
             </a>
           </div>
         </div>
-        <div className="flex items-center justify-between gap-4 w-full text-muted-foreground">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-4 w-full text-muted-foreground">
           <p className="text-sm">{t('copyright', { year: new Date().getFullYear() })}</p>
           <nav>
             <ul className="flex items-center gap-4 [&_a]:text-sm [&_a]:text-muted-foreground [&_a]:hover:text-foreground/80 transition-colors">
