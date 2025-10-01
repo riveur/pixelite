@@ -28,11 +28,15 @@ export function MinecraftColor({
       const color = getColorFromChar(char)
       const decoration = getDecorationFromChar(char)
 
+      // Check if this character is actually a valid color code
+      const validColorChars = '0123456789abcdef'
+      const validDecorationChars = 'klmnor'
+
       // Update current styling
-      if (color) {
+      if (validColorChars.includes(char)) {
         currentColor = color
       }
-      if (decoration) {
+      if (validDecorationChars.includes(char) && decoration) {
         currentDecoration = { ...currentDecoration, ...decoration }
       }
 

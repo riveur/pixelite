@@ -28,8 +28,10 @@ import { useTranslation } from '@/lib/i18n'
 import { getBustUrl } from '@/lib/minecraft/skin'
 import { cn } from '@/lib/utils'
 import { translateBedwarsMode } from '../contents/bedwars'
+import { translateSkywarsMode } from '../contents/skywars'
 import type { Player } from '../types'
 import { BedwarsModeStats } from './bedwars_mode_stats'
+import { SkywarsModeStats } from './skywars_mode_stats'
 
 interface PlayerDetailsProps {
   player: Player
@@ -233,6 +235,7 @@ function PlayerStats({ player }: PlayerStatsProps) {
           ))}
         </TabsList>
         <PlayerStatsBedWarsTab player={player} />
+        <PlayerStatsSkyWarsTab player={player} />
       </Tabs>
     </div>
   )
@@ -243,7 +246,7 @@ interface PlayerStatsBedWarsTabProps {
 }
 
 function PlayerStatsBedWarsTab({ player }: PlayerStatsBedWarsTabProps) {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   const [selectedMode, setSelectedMode] = useState('normal-overall')
 
   const group = selectedMode.split('-')[0]
@@ -253,7 +256,7 @@ function PlayerStatsBedWarsTab({ player }: PlayerStatsBedWarsTabProps) {
     <TabsContent value="bedwars">
       {player.stats.bedwars ? (
         <div className="flex flex-col gap-4">
-          <div className="space-y-1.5">
+          <div>
             <p>
               {t('server.hypixel.labels.level')} :{' '}
               <MinecraftColor>
@@ -261,8 +264,19 @@ function PlayerStatsBedWarsTab({ player }: PlayerStatsBedWarsTabProps) {
               </MinecraftColor>
             </p>
             <p>
-              {t('server.hypixel.labels.prestige')} :{' '}
-              <span>{player.stats.bedwars.prestigeName}</span>
+              {t('server.hypixel.labels.coin', { count: player.stats.bedwars.coins })} :{' '}
+              <MinecraftColor>
+                {'§2' + player.stats.bedwars.coins.toLocaleString(i18n.resolvedLanguage)}
+              </MinecraftColor>
+            </p>
+            <p>
+              {t('server.hypixel.labels.slumberTicket', {
+                count: player.stats.bedwars.slumberTickets,
+              })}{' '}
+              :{' '}
+              <MinecraftColor>
+                {'§b' + player.stats.bedwars.slumberTickets.toLocaleString(i18n.resolvedLanguage)}
+              </MinecraftColor>
             </p>
           </div>
           <Card className="py-4 gap-4">
@@ -297,6 +311,77 @@ function PlayerStatsBedWarsTab({ player }: PlayerStatsBedWarsTabProps) {
             <CardContent className="px-4">
               {/* @ts-ignore */}
               <BedwarsModeStats stats={player.stats.bedwars[group][mode]} />
+            </CardContent>
+          </Card>
+        </div>
+      ) : (
+        <div className="p-4">{t('server.hypixel.messages.noStats')}</div>
+      )}
+    </TabsContent>
+  )
+}
+
+function PlayerStatsSkyWarsTab({ player }: PlayerStatsBedWarsTabProps) {
+  const { t, i18n } = useTranslation()
+  const [selectedMode, setSelectedMode] = useState('overall')
+
+  return (
+    <TabsContent value="skywars">
+      {player.stats.skywars ? (
+        <div className="flex flex-col gap-4">
+          <div>
+            <p>
+              {t('server.hypixel.labels.level')} :{' '}
+              <MinecraftColor>{player.stats.skywars.formattedLevel}</MinecraftColor>
+            </p>
+            <p>
+              {t('server.hypixel.labels.head', { count: player.stats.skywars.heads })} :{' '}
+              <MinecraftColor>
+                {'§5' + player.stats.skywars.heads.toLocaleString(i18n.resolvedLanguage)}
+              </MinecraftColor>
+            </p>
+            <p>
+              {t('server.hypixel.labels.coin', { count: player.stats.skywars.coins })} :{' '}
+              <MinecraftColor>
+                {'§6' + player.stats.skywars.coins.toLocaleString(i18n.resolvedLanguage)}
+              </MinecraftColor>
+            </p>
+            <p>
+              {t('server.hypixel.labels.soul', { count: player.stats.skywars.souls })} :{' '}
+              <MinecraftColor>
+                {'§b' + player.stats.skywars.souls.toLocaleString(i18n.resolvedLanguage)}
+              </MinecraftColor>
+            </p>
+            <p>
+              {t('server.hypixel.labels.token', { count: player.stats.skywars.tokens })} :{' '}
+              <MinecraftColor>
+                {'§2' + player.stats.skywars.tokens.toLocaleString(i18n.resolvedLanguage)}
+              </MinecraftColor>
+            </p>
+          </div>
+          <Card className="py-4 gap-4">
+            <CardHeader className="px-4">
+              <CardTitle>{t('server.labels.statistics')}</CardTitle>
+              <CardAction>
+                <Select value={selectedMode} onValueChange={setSelectedMode}>
+                  <SelectTrigger className="w-[192px]">
+                    <SelectValue />
+                  </SelectTrigger>
+                  <SelectContent align="end" className="w-(--radix-select-trigger-width)">
+                    {['overall', 'solo', 'doubles', 'mega', 'ranked', 'mini'].map((mode) => (
+                      <SelectItem key={mode} value={mode}>
+                        {t(`server.hypixel.games.skywars.modes.${mode}`, {
+                          defaultValue: translateSkywarsMode(mode),
+                        })}
+                      </SelectItem>
+                    ))}
+                  </SelectContent>
+                </Select>
+              </CardAction>
+            </CardHeader>
+            <CardContent className="px-4">
+              {/* @ts-ignore */}
+              <SkywarsModeStats stats={player.stats.skywars[selectedMode]} />
             </CardContent>
           </Card>
         </div>

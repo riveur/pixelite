@@ -69,7 +69,17 @@
         "guild": "Guilde",
         "playerInfo": "Informations du joueur",
         "guildInfo": "Informations de la guilde",
-        "prestige": "Prestige"
+        "prestige": "Prestige",
+        "head_one": "Tête",
+        "head_other": "Têtes",
+        "coin_one": "Pièce",
+        "coin_other": "Pièces",
+        "soul_one": "Âme",
+        "soul_other": "Âmes",
+        "token_one": "Jeton",
+        "token_other": "Jetons",
+        "slumberTicket_one": "Slumber Ticket",
+        "slumberTicket_other": "Slumber Tickets"
       },
       "messages": {
         "noStats": "Aucune statistique disponible pour ce joueur."
@@ -90,6 +100,26 @@
             "wlr":"Ratio W/L",
             "kdr":"Ratio K/D",
             "fkdr":"Ratio Final K/D"
+          },
+          "modes": {
+            "overall": "Global"
+          }
+        },
+        "skywars": {
+          "labels": {
+            "wins": "Parties gagnées",
+            "losses": "Parties perdues",
+            "kills": "Tués",
+            "assists": "Assistances",
+            "deaths": "Morts",
+            "meleeKills": "Morts au corps à corps",
+            "bowKills": "Morts à l'arc",
+            "voidKills": "Morts du vide",
+            "arrowsShot": "Flèches tirées",
+            "arrowsHit": "Flèches touchées",
+            "chestsOpened": "Coffres ouverts",
+            "wlr": "Ratio W/L",
+            "kdr": "Ratio K/D"
           },
           "modes": {
             "overall": "Global"

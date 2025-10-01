@@ -94,6 +94,17 @@ export function PixelUserMinusIcon(props: React.ComponentProps<'svg'>) {
   )
 }
 
+export function PixelUserXIcon(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        d="M12 2h6v2h-6v6h-2V4h2V2zm0 8h6v2h-6v-2zm8-6h-2v6h2V4zM7 16v6h16v-6h-2v4H9v-4h12v-2H9v2H7zm-1-6H4V8H2v2h2v2H2v2h2v-2h2v2h2v-2H6v-2zm0 0h2V8H6v2z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
+
 export function PixelMinusIcon(props: React.ComponentProps<'svg'>) {
   return (
     <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
@@ -151,6 +162,28 @@ export function PixelImageIcon(props: React.ComponentProps<'svg'>) {
     <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
       <path
         d="M4 3H2v18h20V3H4zm16 2v14H4V5h16zm-6 4h-2v2h-2v2H8v2H6v2h2v-2h2v-2h2v-2h2v2h2v2h2v-2h-2v-2h-2V9zM8 7H6v2h2V7z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
+
+export function PixelTradingUpIcon(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        d="M14 6h8v8h-2v-4h-2V8h-4V6zm2 6v-2h2v2h-2zm-2 2v-2h2v2h-2zm-2 0h2v2h-2v-2zm-2-2h2v2h-2v-2zm-2 0v-2h2v2H8zm-2 2v-2h2v2H6zm-2 2v-2h2v2H4zm0 0v2H2v-2h2z"
+        fill="currentColor"
+      />
+    </svg>
+  )
+}
+
+export function PixelTradingDownIcon(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path
+        d="M2 8h2v2h2v2h2v2h2v-2h2v-2h2v2h2v2h2v2h-4v2h8v-8h-2v4h-2v-2h-2v-2h-2V8h-2v2h-2v2H8v-2H6V8H4V6H2v2z"
         fill="currentColor"
       />
     </svg>

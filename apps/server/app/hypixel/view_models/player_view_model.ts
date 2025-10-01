@@ -64,6 +64,7 @@ export class PlayerViewModel {
         : null,
       stats: {
         bedwars: this.getBedwarsStats(),
+        skywars: this.getSkyWarsStats(),
       },
     }
   }
@@ -94,6 +95,9 @@ export class PlayerViewModel {
       level: levelInfo.level,
       prestigeName: levelInfo.prestigeName,
       prestigeColor: levelInfo.prestigeColor,
+      coins: Number(this.player.stats.Bedwars.coins || 0),
+      // @ts-ignore
+      slumberTickets: Number(this.player.stats.Bedwars.slumber?.tickets || 0),
       normal: {
         'overall': this.getBedwarsStatsForMode(''),
         'solo': this.getBedwarsStatsForMode('eight_one_'),
@@ -118,6 +122,42 @@ export class PlayerViewModel {
         castle: this.getBedwarsStatsForMode('castle_'),
         oneblock: this.getBedwarsStatsForMode('eight_one_oneblock_'),
       },
+    }
+  }
+
+  private getSkywarsStatsForMode(suffix: string) {
+    return {
+      wins: Number(this.player.stats?.SkyWars?.[`wins${suffix}`] || 0),
+      losses: Number(this.player.stats?.SkyWars?.[`losses${suffix}`] || 0),
+      kills: Number(this.player.stats?.SkyWars?.[`kills${suffix}`] || 0),
+      assists: Number(this.player.stats?.SkyWars?.[`assists${suffix}`] || 0),
+      deaths: Number(this.player.stats?.SkyWars?.[`deaths${suffix}`] || 0),
+      meleeKills: Number(this.player.stats?.SkyWars?.[`melee_kills${suffix}`] || 0),
+      bowKills: Number(this.player.stats?.SkyWars?.[`bow_kills${suffix}`] || 0),
+      voidKills: Number(this.player.stats?.SkyWars?.[`void_kills${suffix}`] || 0),
+      arrowsShot: Number(this.player.stats?.SkyWars?.[`arrows_shot${suffix}`] || 0),
+      arrowsHit: Number(this.player.stats?.SkyWars?.[`arrows_hit${suffix}`] || 0),
+      chestsOpened: Number(this.player.stats?.SkyWars?.[`chests_opened${suffix}`] || 0),
+    }
+  }
+
+  private getSkyWarsStats() {
+    if (!this.player.stats?.SkyWars) {
+      return null
+    }
+
+    return {
+      formattedLevel: String(this.player.stats.SkyWars.levelFormattedWithBrackets).trim(),
+      heads: Number(this.player.stats.SkyWars.heads || 0),
+      coins: Number(this.player.stats.SkyWars.coins || 0),
+      souls: Number(this.player.stats.SkyWars.souls || 0),
+      tokens: Number(this.player.stats.SkyWars.cosmetic_tokens || 0),
+      overall: this.getSkywarsStatsForMode(''),
+      solo: this.getSkywarsStatsForMode('_solo'),
+      doubles: this.getSkywarsStatsForMode('_team'),
+      mega: this.getSkywarsStatsForMode('_mega'),
+      ranked: this.getSkywarsStatsForMode('_ranked'),
+      mini: this.getSkywarsStatsForMode('_mini'),
     }
   }
 }

@@ -70,7 +70,17 @@
         "guild": "Guild",
         "playerInfo": "Player Informations",
         "guildInfo": "Guild Informations",
-        "prestige": "Prestige"
+        "prestige": "Prestige",
+        "head_one": "Head",
+        "head_other": "Heads",
+        "coin_one": "Coin",
+        "coin_other": "Coins",
+        "soul_one": "Soul",
+        "soul_other": "Souls",
+        "token_one": "Token",
+        "token_other": "Tokens",
+        "slumberTicket_one": "Slumber Ticket",
+        "slumberTicket_other": "Slumber Tickets"
       },
       "messages": {
         "noStats": "No stats available for this player."
@@ -91,6 +101,26 @@
             "wlr":"W/L Ratio",
             "kdr":"K/D Ratio",
             "fkdr":"Final K/D Ratio"
+          },
+          "modes": {
+            "overall": "Overall"
+          }
+        },
+        "skywars": {
+          "labels": {
+            "wins": "Wins",
+            "losses": "Losses",
+            "kills": "Kills",
+            "assists": "Assists",
+            "deaths": "Deaths",
+            "meleeKills": "Melee Kills",
+            "bowKills": "Bow Kills",
+            "voidKills": "Void Kills",
+            "arrowsShot": "Arrows Shot",
+            "arrowsHit": "Arrows Hit",
+            "chestsOpened": "Chests Opened",
+            "wlr": "W/L Ratio",
+            "kdr": "K/D Ratio"
           },
           "modes": {
             "overall": "Overall"

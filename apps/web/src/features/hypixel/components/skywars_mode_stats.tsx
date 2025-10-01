@@ -1,37 +1,37 @@
 import {
-  PixelBedIcon,
   PixelCloseIcon,
-  PixelFrameDeleteIcon,
   PixelMinusIcon,
   PixelPercentIcon,
-  PixelPlayIcon,
+  PixelTradingDownIcon,
+  PixelTradingUpIcon,
   PixelTrophyIcon,
   PixelUserMinusIcon,
   PixelUserPlusIcon,
-  PixelZapIcon,
+  PixelUserXIcon,
 } from '@/features/core/components/icons'
 import { StatCard, StatCardContent, StatCardIcon } from '@/features/core/components/stat_card'
 import { useTranslation } from '@/lib/i18n'
 import type { Player } from '../types'
 
-interface BedwarsModeStatsProps {
-  stats: NonNullable<Player['stats']['bedwars']>['normal']['overall']
+interface SkywarsModeStatsProps {
+  stats: NonNullable<Player['stats']['skywars']>['overall']
 }
 
-export function BedwarsModeStats({ stats }: BedwarsModeStatsProps) {
+export function SkywarsModeStats({ stats }: SkywarsModeStatsProps) {
   const { t, i18n } = useTranslation()
 
   const data = [
-    { key: 'gamesPlayed', value: stats.gamesPlayed, icon: PixelPlayIcon },
-    { key: 'winstreak', value: stats.winstreak, icon: PixelZapIcon },
     { key: 'wins', value: stats.wins, icon: PixelTrophyIcon },
     { key: 'losses', value: stats.losses, icon: PixelCloseIcon },
-    { key: 'bedsBroken', value: stats.bedsBroken, icon: PixelBedIcon },
-    { key: 'bedsLost', value: stats.bedsLost, icon: PixelFrameDeleteIcon },
     { key: 'kills', value: stats.kills, icon: PixelUserPlusIcon },
+    { key: 'assists', value: stats.assists, icon: PixelUserXIcon },
     { key: 'deaths', value: stats.deaths, icon: PixelUserMinusIcon },
-    { key: 'finalKills', value: stats.finalKills, icon: PixelMinusIcon },
-    { key: 'finalDeaths', value: stats.finalDeaths, icon: PixelMinusIcon },
+    { key: 'meleeKills', value: stats.meleeKills, icon: PixelMinusIcon },
+    { key: 'bowKills', value: stats.bowKills, icon: PixelMinusIcon },
+    { key: 'voidKills', value: stats.voidKills, icon: PixelMinusIcon },
+    { key: 'arrowsShot', value: stats.arrowsShot, icon: PixelTradingUpIcon },
+    { key: 'arrowsHit', value: stats.arrowsHit, icon: PixelTradingDownIcon },
+    { key: 'chestsOpened', value: stats.chestsOpened, icon: PixelMinusIcon },
     {
       key: 'wlr',
       value: stats.losses > 0 ? stats.wins / stats.losses : stats.wins,
@@ -40,11 +40,6 @@ export function BedwarsModeStats({ stats }: BedwarsModeStatsProps) {
     {
       key: 'kdr',
       value: stats.deaths > 0 ? stats.kills / stats.deaths : stats.kills,
-      icon: PixelPercentIcon,
-    },
-    {
-      key: 'fkdr',
-      value: stats.finalDeaths > 0 ? stats.finalKills / stats.finalDeaths : stats.finalKills,
       icon: PixelPercentIcon,
     },
   ]
@@ -59,7 +54,7 @@ export function BedwarsModeStats({ stats }: BedwarsModeStatsProps) {
           <StatCardContent>
             <div>
               <p className="font-minecraft">
-                {t(`server.hypixel.games.bedwars.labels.${stat.key}`, { defaultValue: stat.key })}
+                {t(`server.hypixel.games.skywars.labels.${stat.key}`, { defaultValue: stat.key })}
               </p>
               <p className="font-minecraft">
                 {stat.value.toLocaleString(i18n.resolvedLanguage, { maximumFractionDigits: 2 })}
