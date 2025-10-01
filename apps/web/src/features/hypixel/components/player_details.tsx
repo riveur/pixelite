@@ -1,4 +1,5 @@
 import { Link } from '@tanstack/react-router'
+import { ConstructionIcon } from 'lucide-react'
 import { useState } from 'react'
 
 import { PixelAlertIcon } from '@/features/core/components/icons'
@@ -209,43 +210,42 @@ function PlayerStats({ player }: PlayerStatsProps) {
     {
       id: 'bedwars',
       name: 'Bed Wars',
+      imageUrl: '/images/hypixel/games/bedwars.png',
     },
     {
       id: 'skywars',
       name: 'Sky Wars',
+      imageUrl: '/images/hypixel/games/skywars.png',
     },
     {
-      id: 'duels',
-      name: 'Duels',
-    },
-    {
-      id: 'build-battle',
-      name: 'Build Battle',
+      id: 'skyblock',
+      name: 'SkyBlock',
+      imageUrl: '/images/hypixel/games/skyblock.png',
     },
   ]
 
   return (
-    <div>
-      <Tabs defaultValue="bedwars">
-        <TabsList>
-          {games.map((game) => (
-            <TabsTrigger key={game.id} value={game.id}>
-              {game.name}
-            </TabsTrigger>
-          ))}
-        </TabsList>
-        <PlayerStatsBedWarsTab player={player} />
-        <PlayerStatsSkyWarsTab player={player} />
-      </Tabs>
-    </div>
+    <Tabs defaultValue="bedwars" className="gap-4">
+      <TabsList className="h-12">
+        {games.map((game) => (
+          <TabsTrigger key={game.id} value={game.id} className="py-2">
+            <img src={game.imageUrl} className="w-auto h-full" />
+            {game.name}
+          </TabsTrigger>
+        ))}
+      </TabsList>
+      <PlayerStatsBedwarsTab player={player} />
+      <PlayerStatsSkywarsTab player={player} />
+      <PlayerStatsSkyblockTab />
+    </Tabs>
   )
 }
 
-interface PlayerStatsBedWarsTabProps {
+interface PlayerStatsBedwarsTabProps {
   player: Player
 }
 
-function PlayerStatsBedWarsTab({ player }: PlayerStatsBedWarsTabProps) {
+function PlayerStatsBedwarsTab({ player }: PlayerStatsBedwarsTabProps) {
   const { t, i18n } = useTranslation()
   const [selectedMode, setSelectedMode] = useState('normal-overall')
 
@@ -321,7 +321,11 @@ function PlayerStatsBedWarsTab({ player }: PlayerStatsBedWarsTabProps) {
   )
 }
 
-function PlayerStatsSkyWarsTab({ player }: PlayerStatsBedWarsTabProps) {
+interface PlayerStatsSkywarsTabProps {
+  player: Player
+}
+
+function PlayerStatsSkywarsTab({ player }: PlayerStatsSkywarsTabProps) {
   const { t, i18n } = useTranslation()
   const [selectedMode, setSelectedMode] = useState('overall')
 
@@ -388,6 +392,19 @@ function PlayerStatsSkyWarsTab({ player }: PlayerStatsBedWarsTabProps) {
       ) : (
         <div className="p-4">{t('server.hypixel.messages.noStats')}</div>
       )}
+    </TabsContent>
+  )
+}
+
+function PlayerStatsSkyblockTab() {
+  return (
+    <TabsContent value="skyblock">
+      <Card className="border-dashed border-2">
+        <CardContent className="flex-1 flex flex-col items-center justify-center">
+          <ConstructionIcon className="size-24" />
+          <p className="text-xl text-center font-minecraft">Coming soon...</p>
+        </CardContent>
+      </Card>
     </TabsContent>
   )
 }
