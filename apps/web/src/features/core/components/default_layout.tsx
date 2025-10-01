@@ -67,7 +67,7 @@ function Footer({ className, ...props }: React.ComponentProps<'footer'>) {
 
   return (
     <footer className={cn('w-full border-t', className)} {...props}>
-      <div className="max-w-4xl w-full mx-auto flex flex-col items-center py-6 px-4 gap-4">
+      <div className="max-w-7xl w-full mx-auto flex flex-col items-center py-6 px-4 gap-4">
         <div className="flex items-center justify-between gap-4 w-full">
           <div className="flex items-center gap-2">
             <Logo />
