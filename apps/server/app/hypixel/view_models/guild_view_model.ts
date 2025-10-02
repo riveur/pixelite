@@ -50,7 +50,6 @@ export class GuildViewModel {
       ranks: this.guild.ranks,
       preferredGames: this.guild.preferredGames,
       created: this.guild.created,
-      raw: this.guild,
     }
   }
 }
