@@ -17,10 +17,15 @@ export default class ShowPlayerController {
 
     const player = await this.hypixelService.getPlayerByUUID(uuid)
 
+    let guild = null
+    try {
+      guild = await this.hypixelService.getGuildByPlayerUUID(uuid, { withMembers: false })
+    } catch {}
+
     if (!player) {
       return response.notFound({ message: `Player ${params.username} not found` })
     }
 
-    return response.ok(PlayerViewModel.fromDomain(player).serialize())
+    return response.ok(PlayerViewModel.fromDomain({ ...player, guild }).serialize())
   }
 }

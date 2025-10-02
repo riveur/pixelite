@@ -7,7 +7,9 @@ import {
 
 import type { HypixelApiService } from '#hypixel/services/hypixel_api_service'
 
-type Player = NonNullable<Awaited<ReturnType<HypixelApiService['getPlayerByUUID']>>>
+type Player = NonNullable<Awaited<ReturnType<HypixelApiService['getPlayerByUUID']>>> & {
+  guild: Awaited<ReturnType<HypixelApiService['getGuildByPlayerUUID']>> | null
+}
 
 export class PlayerViewModel {
   constructor(private player: Player) {}

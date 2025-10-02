@@ -14,6 +14,7 @@ export default defineConfig({
     () => import('@adonisjs/core/commands'),
     () => import('@adonisjs/lucid/commands'),
     () => import('@tuyau/core/commands'),
+    () => import('@adonisjs/cache/commands'),
   ],
 
   /*
@@ -38,6 +39,7 @@ export default defineConfig({
     () => import('@adonisjs/auth/auth_provider'),
     () => import('@tuyau/core/tuyau_provider'),
     () => import('@adonisjs/static/static_provider'),
+    () => import('@adonisjs/cache/cache_provider'),
   ],
 
   /*

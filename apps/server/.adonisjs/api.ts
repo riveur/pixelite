@@ -11,6 +11,10 @@ type ApiHypixelPlayersIdGetHead = {
   request: unknown
   response: MakeTuyauResponse<import('../app/hypixel/controllers/show_player_controller.ts').default['handle'], false>
 }
+type ApiHypixelGuildsIdGetHead = {
+  request: unknown
+  response: MakeTuyauResponse<import('../app/hypixel/controllers/show_guild_controller.ts').default['handle'], false>
+}
 export interface ApiDefinition {
   'api': {
     'hypixel': {
@@ -20,6 +24,14 @@ export interface ApiDefinition {
           };
           '$get': ApiHypixelPlayersIdGetHead;
           '$head': ApiHypixelPlayersIdGetHead;
+        };
+      };
+      'guilds': {
+        ':name': {
+          '$url': {
+          };
+          '$get': ApiHypixelGuildsIdGetHead;
+          '$head': ApiHypixelGuildsIdGetHead;
         };
       };
     };
