@@ -16,3 +16,20 @@ export function showHypixelPlayerQueryOptions(username: string) {
     },
   })
 }
+
+export function showHypixelGuildQueryOptions({ name, type }: { name: string; type: string }) {
+  return queryOptions({
+    queryKey: ['hypixel', `guilds:${type}`, name],
+    queryFn: async () => {
+      const { data, error } = await client.api.hypixel
+        .guilds({ name: name })
+        .$get({ query: { type: type }, timeout: false })
+
+      if (error) {
+        throw error
+      }
+
+      return data
+    },
+  })
+}

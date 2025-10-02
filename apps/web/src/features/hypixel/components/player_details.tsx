@@ -170,7 +170,12 @@ function PlayerGuildInformations({ player, className, ...props }: PlayerGuildInf
       <CardContent className="px-4 space-y-1.5">
         <p>
           {t('server.labels.name')} :{' '}
-          <Link className="hover:underline font-minecraft" to={`/hypixel`}>
+          <Link
+            className="hover:underline font-minecraft"
+            to="/hypixel/guilds/$name"
+            params={{ name: player.displayName! }}
+            search={{ type: 'player' }}
+          >
             {player.guild.name}
           </Link>
         </p>
@@ -206,20 +211,22 @@ interface PlayerStatsProps {
 }
 
 function PlayerStats({ player }: PlayerStatsProps) {
+  const { t } = useTranslation()
+
   const games = [
     {
       id: 'bedwars',
-      name: 'Bed Wars',
+      name: t('server.hypixel.games.name.bedwars'),
       imageUrl: '/images/hypixel/games/bedwars.png',
     },
     {
       id: 'skywars',
-      name: 'Sky Wars',
+      name: t('server.hypixel.games.name.skywars'),
       imageUrl: '/images/hypixel/games/skywars.png',
     },
     {
       id: 'skyblock',
-      name: 'SkyBlock',
+      name: t('server.hypixel.games.name.skyblock'),
       imageUrl: '/images/hypixel/games/skyblock.png',
     },
   ]

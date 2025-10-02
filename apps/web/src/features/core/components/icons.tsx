@@ -190,6 +190,22 @@ export function PixelTradingDownIcon(props: React.ComponentProps<'svg'>) {
   )
 }
 
+export function PixelCardTextIcon(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path d="M4 4H2v16h20V4H4zm0 2h16v12H4V6zm2 2h12v2H6V8zm0 4h10v2H6v-2z" fill="currentColor" />
+    </svg>
+  )
+}
+
+export function PixelHumanIcon(props: React.ComponentProps<'svg'>) {
+  return (
+    <svg fill="none" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" {...props}>
+      <path d="M10 2h4v4h-4V2zM3 7h18v2h-6v13h-2v-6h-2v6H9V9H3V7z" fill="currentColor" />
+    </svg>
+  )
+}
+
 export function DiscordIcon(props: React.ComponentProps<'svg'>) {
   return (
     <svg role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" {...props}>

@@ -79,7 +79,11 @@
         "token_one": "Jeton",
         "token_other": "Jetons",
         "slumberTicket_one": "Slumber Ticket",
-        "slumberTicket_other": "Slumber Tickets"
+        "slumberTicket_other": "Slumber Tickets",
+        "created": "Date de création",
+        "preferredGame_one": "Jeu préféré",
+        "preferredGame_other": "Jeux préférés",
+        "priority": "Priorité"
       },
       "messages": {
         "noStats": "Aucune statistique disponible pour ce joueur."
@@ -127,10 +131,39 @@
         }
       },
       "playerSearchPlaceholder": "Rechercher un joueur...",
-      "playerSearchHelper": "Pour commencer à voir les statistiques d'un joueur, tapez son nom d'utilisateur dans la barre de recherche ci-dessus."
+      "playerSearchHelper": "Pour commencer à voir les statistiques d'un joueur, tapez son nom d'utilisateur dans la barre de recherche ci-dessus.",
+      "guild": {
+        "searchPlaceholder": "Recherche...",
+        "searchTypeLabel": "Rechercher par",
+        "searchType": {
+          "player": "Joueur",
+          "name": "Nom"
+        },
+        "labels": {
+          "members": "Membres",
+          "ranks": "Rangs"
+        }
+      }
     }
   },
   "terms": "Conditions d'utilisation",
   "privacy": "Politique de confidentialité",
-  "copyright": "© {{year}} Tous droits réservées."
+  "copyright": "© {{year}} Tous droits réservées.",
+  "table": {
+    "perPage": "Résultats par page",
+    "perPagePlaceholder": "Sélectionner les lignes par page",
+    "goFirstPage": "Aller à la première page",
+    "goPreviousPage": "Aller à la page précédente",
+    "goNextPage": "Aller à la page suivante",
+    "goLastPage": "Aller à la dernière page",
+    "pageStatus": "sur",
+    "noResults": "Aucun résultat.",
+    "filter": {
+      "all": "Tous",
+      "boolean": {
+        "true": "Actif",
+        "false": "Inactif"
+      }
+    }
+  }
 }

@@ -13,8 +13,10 @@ import { Route as HypixelRouteRouteImport } from './routes/hypixel/route'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as HypixelIndexRouteImport } from './routes/hypixel/index'
 import { Route as HypixelPlayersRouteImport } from './routes/hypixel/players'
+import { Route as HypixelGuildsRouteImport } from './routes/hypixel/guilds'
 import { Route as HypixelPlayersIndexRouteImport } from './routes/hypixel/players.index'
 import { Route as HypixelPlayersUsernameRouteImport } from './routes/hypixel/players.$username'
+import { Route as HypixelGuildsNameRouteImport } from './routes/hypixel/guilds.$name'
 
 const HypixelRouteRoute = HypixelRouteRouteImport.update({
   id: '/hypixel',
@@ -36,6 +38,11 @@ const HypixelPlayersRoute = HypixelPlayersRouteImport.update({
   path: '/players',
   getParentRoute: () => HypixelRouteRoute,
 } as any)
+const HypixelGuildsRoute = HypixelGuildsRouteImport.update({
+  id: '/guilds',
+  path: '/guilds',
+  getParentRoute: () => HypixelRouteRoute,
+} as any)
 const HypixelPlayersIndexRoute = HypixelPlayersIndexRouteImport.update({
   id: '/',
   path: '/',
@@ -46,18 +53,27 @@ const HypixelPlayersUsernameRoute = HypixelPlayersUsernameRouteImport.update({
   path: '/$username',
   getParentRoute: () => HypixelPlayersRoute,
 } as any)
+const HypixelGuildsNameRoute = HypixelGuildsNameRouteImport.update({
+  id: '/$name',
+  path: '/$name',
+  getParentRoute: () => HypixelGuildsRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/hypixel': typeof HypixelRouteRouteWithChildren
+  '/hypixel/guilds': typeof HypixelGuildsRouteWithChildren
   '/hypixel/players': typeof HypixelPlayersRouteWithChildren
   '/hypixel/': typeof HypixelIndexRoute
+  '/hypixel/guilds/$name': typeof HypixelGuildsNameRoute
   '/hypixel/players/$username': typeof HypixelPlayersUsernameRoute
   '/hypixel/players/': typeof HypixelPlayersIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/hypixel/guilds': typeof HypixelGuildsRouteWithChildren
   '/hypixel': typeof HypixelIndexRoute
+  '/hypixel/guilds/$name': typeof HypixelGuildsNameRoute
   '/hypixel/players/$username': typeof HypixelPlayersUsernameRoute
   '/hypixel/players': typeof HypixelPlayersIndexRoute
 }
@@ -65,8 +81,10 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/hypixel': typeof HypixelRouteRouteWithChildren
+  '/hypixel/guilds': typeof HypixelGuildsRouteWithChildren
   '/hypixel/players': typeof HypixelPlayersRouteWithChildren
   '/hypixel/': typeof HypixelIndexRoute
+  '/hypixel/guilds/$name': typeof HypixelGuildsNameRoute
   '/hypixel/players/$username': typeof HypixelPlayersUsernameRoute
   '/hypixel/players/': typeof HypixelPlayersIndexRoute
 }
@@ -75,18 +93,28 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/hypixel'
+    | '/hypixel/guilds'
     | '/hypixel/players'
     | '/hypixel/'
+    | '/hypixel/guilds/$name'
     | '/hypixel/players/$username'
     | '/hypixel/players/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/hypixel' | '/hypixel/players/$username' | '/hypixel/players'
+  to:
+    | '/'
+    | '/hypixel/guilds'
+    | '/hypixel'
+    | '/hypixel/guilds/$name'
+    | '/hypixel/players/$username'
+    | '/hypixel/players'
   id:
     | '__root__'
     | '/'
     | '/hypixel'
+    | '/hypixel/guilds'
     | '/hypixel/players'
     | '/hypixel/'
+    | '/hypixel/guilds/$name'
     | '/hypixel/players/$username'
     | '/hypixel/players/'
   fileRoutesById: FileRoutesById
@@ -126,6 +154,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HypixelPlayersRouteImport
       parentRoute: typeof HypixelRouteRoute
     }
+    '/hypixel/guilds': {
+      id: '/hypixel/guilds'
+      path: '/guilds'
+      fullPath: '/hypixel/guilds'
+      preLoaderRoute: typeof HypixelGuildsRouteImport
+      parentRoute: typeof HypixelRouteRoute
+    }
     '/hypixel/players/': {
       id: '/hypixel/players/'
       path: '/'
@@ -140,8 +175,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof HypixelPlayersUsernameRouteImport
       parentRoute: typeof HypixelPlayersRoute
     }
+    '/hypixel/guilds/$name': {
+      id: '/hypixel/guilds/$name'
+      path: '/$name'
+      fullPath: '/hypixel/guilds/$name'
+      preLoaderRoute: typeof HypixelGuildsNameRouteImport
+      parentRoute: typeof HypixelGuildsRoute
+    }
   }
 }
+
+interface HypixelGuildsRouteChildren {
+  HypixelGuildsNameRoute: typeof HypixelGuildsNameRoute
+}
+
+const HypixelGuildsRouteChildren: HypixelGuildsRouteChildren = {
+  HypixelGuildsNameRoute: HypixelGuildsNameRoute,
+}
+
+const HypixelGuildsRouteWithChildren = HypixelGuildsRoute._addFileChildren(
+  HypixelGuildsRouteChildren,
+)
 
 interface HypixelPlayersRouteChildren {
   HypixelPlayersUsernameRoute: typeof HypixelPlayersUsernameRoute
@@ -158,11 +212,13 @@ const HypixelPlayersRouteWithChildren = HypixelPlayersRoute._addFileChildren(
 )
 
 interface HypixelRouteRouteChildren {
+  HypixelGuildsRoute: typeof HypixelGuildsRouteWithChildren
   HypixelPlayersRoute: typeof HypixelPlayersRouteWithChildren
   HypixelIndexRoute: typeof HypixelIndexRoute
 }
 
 const HypixelRouteRouteChildren: HypixelRouteRouteChildren = {
+  HypixelGuildsRoute: HypixelGuildsRouteWithChildren,
   HypixelPlayersRoute: HypixelPlayersRouteWithChildren,
   HypixelIndexRoute: HypixelIndexRoute,
 }

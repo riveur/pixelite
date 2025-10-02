@@ -7,7 +7,7 @@ interface SearchInputProps extends React.ComponentProps<typeof Input> {}
 
 export function SearchInput({ type = 'search', disabled, className, ...props }: SearchInputProps) {
   return (
-    <div className="flex rounded-md shadow-xs">
+    <div data-slot="search-input" className="flex shadow-xs">
       <Input
         type={type}
         disabled={disabled}

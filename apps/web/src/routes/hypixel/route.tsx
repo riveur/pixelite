@@ -30,7 +30,11 @@ function RouteComponent() {
       url: '/hypixel/players',
       children: ['/hypixel/players', '/hypixel/players/', '/hypixel/players/$username'],
     },
-    { label: t('server.hypixel.labels.guild'), url: '/hypixel/guilds' },
+    {
+      label: t('server.hypixel.labels.guild'),
+      url: '/hypixel/guilds',
+      children: ['/hypixel/guilds', '/hypixel/guilds/', '/hypixel/guilds/$name'],
+    },
     { label: t('server.labels.website'), url: info.website, external: true },
     { label: t('server.labels.wiki'), url: info.wiki!, external: true },
   ]
